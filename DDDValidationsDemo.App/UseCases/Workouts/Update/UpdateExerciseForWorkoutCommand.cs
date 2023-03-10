@@ -36,7 +36,7 @@ namespace DDDValidationsDemo.App.UseCases.Workouts.Update
                     return Maybe<Guid>.NotFound();
                 }
 
-                if (workout.HasExercise(command.ExerciseId))
+                if (!workout.HasExercise(command.ExerciseId))
                 {
                     return Maybe<Guid>.Problem("Exercise", "Exercise not found");
                 }
