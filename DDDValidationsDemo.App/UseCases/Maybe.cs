@@ -30,14 +30,24 @@
             return new Maybe<T>(value);
         }
 
-        public static Maybe<T> Failure(Dictionary<string, string[]> errors, ResponseCode code = ResponseCode.InvalidCommand)
+        public static Maybe<T> Problem(Dictionary<string, string[]> errors)
         {
-            return new Maybe<T>(errors, code);
+            return new Maybe<T>(errors, ResponseCode.InvalidCommand);
         }
 
-        public static Maybe<T> Failure(string propName, string[] errors, ResponseCode code = ResponseCode.InvalidCommand)
+        public static Maybe<T> Problem(string propName, params string[] errors)
         {
-            return Failure(new Dictionary<string, string[]> { { propName, errors } }, code);
+            return Problem(new Dictionary<string, string[]> { { propName, errors } });
+        }
+
+        public static Maybe<T> NotFound()
+        {
+            return new Maybe<T>(
+                new Dictionary<string, string[]>
+                {
+                    { "global", new string[1] { "Resource not found" } }
+                },
+                ResponseCode.ResourceNotFound);
         }
     }
 }

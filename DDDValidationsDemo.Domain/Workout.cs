@@ -31,5 +31,17 @@
 
             return new Workout(id, name, exercises);
         }
+
+        public void UpdateExercise(Guid exerciseId, ExerciseName name)
+        {
+            var exercise = _excerises.Single(e => e.Id == exerciseId);
+
+            exercise.Update(name);
+        }
+
+        public bool HasExercise(Guid id)
+        {
+            return _excerises.Any(e => e.Id == id);
+        }
     }
 }

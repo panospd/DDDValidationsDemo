@@ -30,7 +30,7 @@ namespace DDDValidationsDemo.App.UseCases
 
             if (errorsDictionary.Any())
             {
-                return Maybe<TResponse>.Failure(errorsDictionary);
+                return Maybe<TResponse>.Problem(errorsDictionary);
             }
 
             return await ExecuteCommand(request, cancellationToken);

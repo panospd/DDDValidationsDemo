@@ -10,6 +10,11 @@ namespace DDDValidationsDemo.Db
         {
         }
 
+        public async Task<Workout?> GetById(Guid id)
+        {
+            return await Task.FromResult(Store.Workouts.SingleOrDefault(w => w.Id == id));
+        }
+
         public Task Save(Workout workout)
         {
             Store.Workouts.Add(workout);
