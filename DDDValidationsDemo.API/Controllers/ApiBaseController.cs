@@ -1,5 +1,6 @@
 ﻿using DDDValidationsDemo.App.UseCases;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace DDDValidationsDemo.API.Controllers
 {
