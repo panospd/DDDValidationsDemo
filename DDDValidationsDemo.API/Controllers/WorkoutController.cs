@@ -1,5 +1,6 @@
 ﻿using DDDValidationsDemo.App.UseCases;
 using DDDValidationsDemo.App.UseCases.Workouts.Add;
+using DDDValidationsDemo.App.UseCases.Workouts.Update;
 using DDDValidationsDemo.Db;
 using DDDValidationsDemo.Domain;
 using MediatR;
@@ -20,6 +21,12 @@ namespace DDDValidationsDemo.API.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Post(AddWorkoutCommand command)
+        {
+            return Respond(await _mediator.Send(command));
+        }
+
+        [HttpPut("exercises")]
+        public async Task<IActionResult> Put(UpdateExerciseForWorkoutCommand command)
         {
             return Respond(await _mediator.Send(command));
         }
